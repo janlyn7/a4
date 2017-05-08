@@ -1,0 +1,79 @@
+body {
+  width: 90%;
+  padding: 50px 80px 50px 80px;
+  background: white;
+}
+
+#title {
+  font-family: audiowide;
+  text-align: left;
+  padding: 25px 0 0 0;
+}
+
+h6 {
+  #font-family: Roboto;
+  font-variant: small-caps;
+  font-weight: bold;
+  padding: 40px 0 0 0;
+}
+
+img {
+  width: 100px;
+  float: right;
+}
+
+
+form {
+  margin: 50px 0 25px 0;
+  text-align: center;
+}
+
+#page_title {
+  text-align: center;
+}
+#row {
+  display: inline;
+}
+select {
+  width: 200px;
+}
+
+#subject_input {
+  width: 500px;
+}
+
+#description, #notes {
+  width: 500px;
+  height: 200px;
+}
+
+.message {
+  text-align: center;
+  background-color: yellow;
+}
+
+.error {
+  text-align: center;
+  background-color: red;
+}
+
+// for type tags
+.square {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.blue {
+  background: #13b4ff;
+}
+
+.purple {
+  background: #ab3fdd;
+}
+
+.wine {
+  background: #ae163e;
+}
