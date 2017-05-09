@@ -6,13 +6,12 @@
 
 
 @section('content')
-  <form method='POST' action='/task/edit'>
-    {{ csrf_field() }}
-
-    <input type='hidden' name='id' value='{{$task->id}}'>
        <div class='ten columns'>
+         <form method='POST' action='/task/edit' id='edit_form'>
+    	       {{ csrf_field() }}
 
            <div class='row'>
+	       <input type='hidden' name='id' value='{{$task->id}}'>
 	       <h5>Edit Task #{{ $task->id }}</h5>
            </div>
 
@@ -65,18 +64,19 @@
 
            <div class='row'>
  	       <label for=''>Description</label>
-               <input type='text' name='description' id='description' value='{{ $task->description }}'>
+               <textarea name='description' id='description' form='edit_page'>{{ $task->description }}</textarea>
            </div>
 
            <div class='row'>
                <label for='notes'>Notes</label>
-               <input type='text' name='notes' id='notes' value='{{ $task->comments }}'> 
+               <textarea name='notes' id='notes' form='edit_page'>{{ $task->comments }}</textarea> 
            </div>
 
            <div class='row'>
                <input type='submit' id='edit' value='Edit Task'>
            </div>
+         </form>
+
        </div>
 
-  </form>
 @endsection

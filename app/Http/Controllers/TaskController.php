@@ -111,6 +111,28 @@ class TaskController extends Controller
     }
 
 
+    public function view($id) {
+        $task = Task::with('types')->find($id);
+    	
+        $assignees_list = Assignee::getListOfAssignees();
+	$types_list = Type::getListOfTypes();
+
+	$typesForThisTask = [];
+        foreach($task->types as $type) {
+            $typesForThisTask[] = $type->name;
+        }
+
+        return view('task.view')->with([
+	    'task'      => $task,
+            'assignees' => $assignees_list,
+	    'types_list'=> $types_list,
+	    'typesForThisTask' => $typesForThisTask,
+            'priority'  => $this->priority,
+            'status'    => $this->status,
+        ]);
+    }
+
+
     public function edit($id) {
     	//$task = Task::find($id);
         $task = Task::with('types')->find($id);

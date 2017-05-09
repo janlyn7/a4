@@ -6,17 +6,20 @@
 
 
 @section('content')
-    <h1>Confirm deletion</h1>
+    <div class='ten columns'>
+
     <form method='POST' action='/task/delete'>
         {{ csrf_field() }}
 
-        <input type='hidden' name='id' value='{{ $task->id }}'?>
+           <div class='row'>
+               <input type='hidden' name='id' value='{{$task->id}}'>
+	       <h5>Delete Task #{{ $task->id }}</h5>
+           </div>
 
-        <h5>Are you sure you want to delete Task #{{ $task->id }}?</h5>
-
-        <input type='submit' value='Yes, delete this Task.'>
-
+	   <div class='row'>
+               <input type='submit' value='Yes, delete this Task.'>
+	   </div>
     </form>
-
+    </div>
 
 @endsection

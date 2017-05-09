@@ -53,11 +53,9 @@
 	          {{ $task->status }}
               </div>
               <div class='one columns' id=actions>
-	        <ul id='actions'>
-	        <li><a href="task/delete/{{ $task->id }}"><img src="images/trash.png" alt="trash task" style="width:20px;height:20px;border:0;"></a></li>
-	        <li><a href="task/edit/{{ $task->id }}  "><img src="images/edit.png"  alt="edit task"  style="width:20px;height:20px;border:0;"></a></li>
- 	        <li><a href="task/view/{{ $task->id }}  "><img src="images/view.png"  alt="view task"  style="width:20px;height:20px;border:0;"></a></li>
-		</ul>
+	        <a href="task/delete/{{ $task->id }}"><img src="images/trash.png" alt="trash task" style="width:20px;height:20px;border:0;"></a>
+	        <a href="task/edit/{{ $task->id }}  "><img src="images/edit.png"  alt="edit task"  style="width:20px;height:20px;border:0;"></a>
+ 	        <a href="task/view/{{ $task->id }}  "><img src="images/view.png"  alt="view task"  style="width:20px;height:20px;border:0;"></a>
 	      </div>
 
           </div>

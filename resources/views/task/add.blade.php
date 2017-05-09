@@ -6,10 +6,10 @@
 
 
 @section('content')
-  <form method='POST' action='/task/add'>
-    {{ csrf_field() }}
+     <div class='ten columns'>
+        <form method='POST' action='/task/add' id='add_form'>
+    	{{ csrf_field() }}
 
-       <div class='ten columns'>
            <div class='row'>
 	       <h5>Add A Task</h5>
 	   </div>       
@@ -51,7 +51,6 @@
 		    @endforeach
 		 </select>
 	   </div>        
-
            <div class='row'>
 	      <label for='status'>Status</label>
                  <select name='status' id='status'>
@@ -63,20 +62,21 @@
 	   </div>        
 
            <div class='row'>
- 	       <label for=''>Description</label>
-               <input type='text' name='description' id='description' value='{{ old('description', '') }}'>
+ 	       <label for='description'>Description</label>
+               <textarea name='description' id='description' form='add_form'>{{ old('description') }}</textarea>
            </div>
 
            <div class='row'>
                <label for='notes'>Notes</label>
-               <input type='text' name='notes' id='notes' value='{{ old('notes', '') }}'> 
+               <textarea name='notes' id='notes' form='add_form'>{{ old('notes') }}</textarea> 
            </div>
 
 
            <div class='row'>
                <input type='submit' id='add' value='Add Task'>
    	   </div>
-       </div>
  
-  </form>
+       </form>
+     </div>
+
 @endsection
