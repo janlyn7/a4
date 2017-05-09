@@ -9,44 +9,32 @@
   <form method='POST' action='/task/add'>
     {{ csrf_field() }}
 
-    <div class='container'>
-
-       <div class='row'>
-           <div class='twelve columns' id='view_title'>
+       <div class='ten columns'>
+           <div class='row'>
 	       <h5>Add A Task</h5>
 	   </div>       
-       </div>
 
-       <div class='row'>
-           <div class='twelve columns'>
+           <div class='row'>
+
 	       <label for='subject'>Subject</label>
                <input type='text' autofocus name='subject' id='subject_input' value='{{ old('subject', '') }}'>
 	   </div>       
 
-       </div>
-
-       <div class='row'>
-           <div class='twelve columns'>
+           <div class='row'>
                <label for='types'>Task Types:</label>
 	       <ul id='types'>
                    @foreach($types_list as $id => $name)
-                       <li><input
-                             type='checkbox'
-                             value='{{ $id }}'
-                             id='type_{{ $id }}'
-                             name='types[]'
-                           >
-                           &nbsp;
-                           <label for='type_{{ $id }}'>{{ $name }}</label>
+		       <li>
+                         <label for='type_{{ $id }}'>
+                           <input type='checkbox' value='{{ $id }}' id='type_{{ $id }}' name='types[]'> 
+			   {{ $name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         </label>
                        </li>
                     @endforeach
                  </ul>
            </div>
-       </div>
 
-
-       <div class='row'>
-           <div class='twelve columns'>
+           <div class='row'>
 	      <label for='assignee'>Assignee</label>
                  <select name='assignee' id='assignee'>
 		    @foreach($assignees as $id => $assigneeName)
@@ -54,10 +42,8 @@
 		    @endforeach
 		 </select>
 	   </div>        
-       </div>
 
-       <div class='row'>
-           <div class='twelve columns'>
+           <div class='row'>
 	      <label for='priority'>Priority</label>
                  <select name='priority' id='priority'>
 		    @foreach($priority as $pp)
@@ -65,10 +51,8 @@
 		    @endforeach
 		 </select>
 	   </div>        
-       </div>
 
-       <div class='row'>
-            <div class='twelve columns'>
+           <div class='row'>
 	      <label for='status'>Status</label>
                  <select name='status' id='status'>
 		    @foreach($status as $stat)
@@ -77,30 +61,22 @@
 		 </select>
 
 	   </div>        
-       </div>
 
-       <div class='row'>
-            <div class='twelve columns'>
+           <div class='row'>
  	       <label for=''>Description</label>
                <input type='text' name='description' id='description' value='{{ old('description', '') }}'>
-	    </div>
-       </div>
+           </div>
 
-       <div class='row'>
-            <div class='twelve columns'>
+           <div class='row'>
                <label for='notes'>Notes</label>
                <input type='text' name='notes' id='notes' value='{{ old('notes', '') }}'> 
-	    </div>
-       </div>
+           </div>
 
-       <div class='row'>
-            <div class='twelve columns'>
+
+           <div class='row'>
                <input type='submit' id='add' value='Add Task'>
-   	    </div>
+   	   </div>
        </div>
  
-
-    </div>
-
   </form>
 @endsection

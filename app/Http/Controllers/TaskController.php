@@ -23,8 +23,6 @@ class TaskController extends Controller
 	$tasksByPriority = $tasks->sortByDesc('priority');
 	$tasksByStatus = $tasks->sortByDesc('status');
 	
-	dump($tasksByPerson);
-
 	$tasksByType = collect();
 	foreach ($tasks as $task) {
 	   $names = $task->types()->get()->pluck('name')->implode(',');
@@ -41,7 +39,7 @@ class TaskController extends Controller
 	//$types_list = Type::getListOfTypes();
 	
 	return view('task.index')->with([
-	    'tasks'     => $tasksByType,
+	    'tasks'     => $tasks,
 	    'assignees' => $assignees_list,
 	    //'types_list'=> $types_list,
         ]);
