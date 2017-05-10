@@ -17,7 +17,9 @@
 
 <body>
     @if(Session::has('error'))
-      <div class='error'>{{ Session::get('error') }}</div>
+       <div class='error'>{{ Session::get('error') }} </div>
+       @php (Session::forget('error'))
+
     @elseif (Session::has('message'))
       <div class='message'>{{ Session::get('message') }}</div>
     @else
@@ -32,7 +34,7 @@
 
       <div class='row' id='title_logo'>
         <div class='four columns' id='logo'>
-          <img src='http://spanvisioninfotech.com/img/icons/copy-writing.png'>
+          <img src="/images/task_clipboard_icon.png">
         </div>
         <div class='eight columns' id='title'>
           <h1> Task Tracker</h1>
@@ -52,11 +54,11 @@
 	  <nav>
  	    <label for='views'>View By:</label>
 	    <ul id='views'>
-	      <li id="navpart1"><a href=""> Number</a></li>
-	      <li id="navpart2"><a href=""> Type</a></li>
-	      <li id="navpart3"><a href=""> Assignee</a></li>
-	      <li id="navpart4"><a href=""> Priority</a></li>
-	      <li id="navpart5"><a href=""> Status</a></li>
+	      <li @isset ($iamhere) @if ($iamhere =='number') id="iamhere" @endif @endisset><a href="/task/number"> Number</a></li>
+	      <li @isset ($iamhere) @if ($iamhere =='type') id="iamhere" @endif @endisset><a href="/task/type"> Type</a></li>
+	      <li @isset ($iamhere) @if ($iamhere =='assignee') id="iamhere" @endif @endisset><a href="/task/assignee"> Assignee</a></li>
+	      <li @isset ($iamhere) @if ($iamhere =='priority') id="iamhere" @endif @endisset><a href="/task/priority"> Priority</a></li>
+	      <li @isset ($iamhere) @if ($iamhere =='status') id="iamhere" @endif @endisset><a href="/task/status"> Status</a></li>
 	    </ul>
 	  </nav>
 

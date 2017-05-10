@@ -6,7 +6,12 @@
 
 
 @section('content')
-    <div class='ten columns'>
+
+        <div class="one column">
+	&nbsp;
+	</div>
+
+    <div class='eight columns'>
 
     <form method='POST' action='/task/delete'>
         {{ csrf_field() }}

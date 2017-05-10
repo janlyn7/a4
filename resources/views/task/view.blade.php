@@ -6,58 +6,77 @@
 
 
 @section('content')
-       <div class='ten columns'>
-         <form method='GET' action='/task/edit/{{ $task->id }}' id='view_form'>
-    	       {{ csrf_field() }}
+	<div class="one column">
+	&nbsp;
+	</div>
+
+       <div class='eight columns'>
+         <form method='GET' action='/task/edit/{{$task->id}}' id='view_form'>
 
            <div class='row'>
-	       <input type='hidden' name='id' value='{{$task->id}}'>
 	       <h5>Task #{{ $task->id }}</h5>
            </div>
 
+           <div class='row ltblue'>
+	       Subject
+           </div>
            <div class='row'>
-	       Subject:
                {{ $task->subject }}
            </div>
 
 
+           <div class='row ltblue'>
+               Task Types
+           </div>
            <div class='row'>
-               <label for='types'>Task Types:</label>
-               <ul id='types'>
+               <ul id='view_types'>
                    @foreach($types_list as $id => $name)
-                       <li>
-                           {{ $name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       </li>
-                    @endforeach
+		       @if (in_array($name, $typesForThisTask))
+		           <li> {{ $name }} </li>
+		       @endif	
+                   @endforeach
                  </ul>
            </div>
 
+           <div class='row ltblue'>
+	      Assignee
+           </div>
            <div class='row'>
-	      Assignee: <br/>
-	      {{ $assignees[$task->assignee_id] }}
+	      {{ $assignees_list[$task->assignee_id] }}
            </div>
 
+           <div class='row ltblue'>
+	      Priority
+           </div>
            <div class='row'>
-	      Priority: <br/>
 	      {{ $task->priority }}
            </div>
 
+           <div class='row ltblue'>
+	       Status
+           </div>
            <div class='row'>
-	       Status: <br/>
 	       {{ $task->status }}
            </div>
 
+           <div class='row ltblue'>
+ 	       Description
+           </div>
            <div class='row'>
- 	       Description: <br/>
                {{ $task->description }}
+	       <br/> 
+           </div>
+
+           <div class='row ltblue'>
+               Notes
+           </div>
+           <div class='row'>
+               {{ $task->comments }}
+	       <br/> 
            </div>
 
            <div class='row'>
-               Notes: </br>
-               {{ $task->comments }} 
-           </div>
-
-           <div class='row'>
+	       <br/><br/>
                <input type='submit' id='edit' value='Edit Task'>
            </div>
          </form>

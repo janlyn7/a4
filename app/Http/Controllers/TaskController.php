@@ -16,13 +16,29 @@ class TaskController extends Controller
     public $status   = ['Open', 'In Progress', 'Fixed', 'Installed', 'Closed', 'Rejected'];
 
     //
-    public function index() {
+    public function index($id='number') {
+
+	$assignees_list = Assignee::getListOfAssignees();
+	$types_list = Type::getListOfTypes();
+
+        if ($id == 'add')        
+	    return view('task.add')->with([
+                'assignees_list' => $assignees_list,
+                'types_list'=> $types_list,
+                'priority_list'  => $this->priority,
+                'status_list'    => $this->status,
+            ]);
+
+
         $tasks = Task::with('types')->get();
 
-	$tasksByPerson = $tasks->sortByDesc('assignee');
-	$tasksByPriority = $tasks->sortByDesc('priority');
-	$tasksByStatus = $tasks->sortByDesc('status');
-	
+	if ($id =='assignee')
+	    $tasks = $tasks->sortByDesc('assignee');
+	elseif ($id == 'priority')
+  	    $tasks = $tasks->sortByDesc('priority');
+	elseif ($id == 'status')
+	    $tasks = $tasks->sortByDesc('status');
+	/*
 	$tasksByType = collect();
 	foreach ($tasks as $task) {
 	   $names = $task->types()->get()->pluck('name')->implode(',');
@@ -31,17 +47,15 @@ class TaskController extends Controller
 	       $tasksByType->push($task);
 	   }
 	}
-
+	*/
 	
 	//dump($tasksByType);
-
-	$assignees_list = Assignee::getListOfAssignees();
-	//$types_list = Type::getListOfTypes();
 	
 	return view('task.index')->with([
 	    'tasks'     => $tasks,
-	    'assignees' => $assignees_list,
-	    //'types_list'=> $types_list,
+	    'assignees_list' => $assignees_list,
+	    'types_list'=> $types_list,
+	    'iamhere'   => $id,
         ]);
     }
 
@@ -51,40 +65,59 @@ class TaskController extends Controller
 	$types_list = Type::getListOfTypes();
 
 	return view('task.add')->with([
-	    'assignees' => $assignees_list,
+	    'assignees_list' => $assignees_list,
 	    'types_list'=> $types_list,
-	    'priority'  => $this->priority,
-	    'status'    => $this->status,
+	    'priority_list'  => $this->priority,
+	    'status_list'    => $this->status,
 	]);
     }
 
 
     public function addTask(Request $request) {
-
-        $subject = $request->input('subject');
-
     	// validate inputs
+        $subject = $request->input('subject');
         $rules = array(
-	    'subject' => 'required',
+	    'subject' => 'required|max:190',
         );
 
         $validator = Validator::make($request->input(), $rules);
 
+	$types = ($request->types) ?: [];
+
 	if ($validator->fails()) {
 	   // flash error messages
-	   //$errmsgs = $validator->messages();
-           Session::flash('error', 'Task addition failed ');
+	   $errmsgs = 'Task addition failed: ';
+
+	   foreach ($validator->messages()->all() as $error) {
+	       $errmsgs = $errmsgs.$error;
+	   }
+	   
+           Session::flash('error', $errmsgs);
 
 	   $assignees_list = Assignee::getListOfAssignees();  
 	   $types_list = Type::getListOfTypes();
 
+	   $typesForThisTask = [];
+	   if (!empty($request->types) ) {
+               foreach($request->types as $type) {
+                   $typesForThisTask[] = $type;
+               }
+	   }
+
 	   //return to same view with saved fields
 	   return view('task.add')->with([
-	       'subject'   => $subject,
-	       'assignees' => $assignees_list,
+	       'subject' => $subject,
+	       'assignees_list' => $assignees_list,
+	       'description' => $request->description,
+	       'assignee_id' => $request->assignee, 
+	       'types' => $request->types,
+	       'priority' => $request->priority,
+	       'status'  => $request->status,
+	       'notes'   => $request->notes,
    	       'types_list'=> $types_list,
-  	       'priority'  => $this->priority,
-	       'status'    => $this->status,
+  	       'priority_list'  => $this->priority,
+	       'status_list'    => $this->status,
+               'typesForThisTask' => $typesForThisTask,
 	   ]);
 	}
 
@@ -99,7 +132,7 @@ class TaskController extends Controller
 
 	$task->save();
 
-	$types = ($request->types) ?: [];
+	//$types = ($request->types) ?: [];
         $task->types()->sync($types);
 
 	$task->save();
@@ -124,7 +157,7 @@ class TaskController extends Controller
 
         return view('task.view')->with([
 	    'task'      => $task,
-            'assignees' => $assignees_list,
+            'assignees_list' => $assignees_list,
 	    'types_list'=> $types_list,
 	    'typesForThisTask' => $typesForThisTask,
         ]);
@@ -145,11 +178,11 @@ class TaskController extends Controller
 
         return view('task.edit')->with([
 	    'task'      => $task,
-            'assignees' => $assignees_list,
+            'assignees_list' => $assignees_list,
 	    'types_list'=> $types_list,
 	    'typesForThisTask' => $typesForThisTask,
-            'priority'  => $this->priority,
-            'status'    => $this->status,
+            'priority_list'  => $this->priority,
+            'status_list'    => $this->status,
         ]);
     }
 
@@ -159,27 +192,31 @@ class TaskController extends Controller
 
     	// validate inputs
         $rules = array(
-	    'subject' => 'required',
+	    'subject' => 'required|max:190',
         );
 
         $validator = Validator::make($request->input(), $rules);
 
 	if ($validator->fails()) {
 	   // flash error messages
-	   //$errmsgs = $validator->messages();
-           Session::flash('error', 'Task addition failed ');
+	   $errmsgs = 'Task update failed: ';
+
+	   foreach ($validator->messages()->all() as $error) {
+	       $errmsgs = $errmsgs.$error;
+	   }
+	   
+           Session::flash('error', $errmsgs);
 
 	   $assignees_list = Assignee::getListOfAssignees();  
 	   $types_list = Type::getListOfTypes();
 
 	   //return to same view with saved fields
-	   return view('task.add')->with([
+	   return redirect('/task/edit/'.$request->id)->with([
 	       'task'      => $task,
-	       'subject'   => $subject,
-	       'assignees' => $assignees_list,
+	       'assignees_list' => $assignees_list,
   	       'types_list'=> $types_list,
-  	       'priority'  => $this->priority,
-	       'status'    => $this->status,
+  	       'priority_list'  => $this->priority,
+	       'status_list'    => $this->status,
 	   ]);
 	}
 
@@ -197,7 +234,7 @@ class TaskController extends Controller
 
         $task->save();
 
-	Session::flash('message', 'Task #'.$request->id.'has been updated');
+	Session::flash('message', 'Task #'.$request->id.' has been updated');
 
 	return redirect('/task');
 

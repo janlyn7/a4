@@ -3,10 +3,6 @@ body {
   background-size: 100px 100px;	
 }
 
-#head {
-  height: -25px;
-}
-
 #title_logo {
   background-color: #8dbdd8;
   padding: 20px 0 10px 0;
@@ -39,20 +35,18 @@ h5, h6 {
    height: 30px;
 }
 
-.column, .columns {
-
-}
-
 #navigation{
   font-family: 'Exo 2', sans-serif;
   font-weight: bold;
   font-size: 15px; 
+  color: #777777;
 }
 
 #add_task {
   font-family: 'Exo 2', sans-serif;
   font-weight: bold;
   text-decoration: none;
+  color: #3560dd;
 }
 
 img {
@@ -64,6 +58,12 @@ img {
   display: inline-block;
 }
 
+#view_types {
+  list-style: none;
+  display: block;
+
+}
+
 nav ul {
   list-style: none;
 }
@@ -73,14 +73,17 @@ nav ul li a {
   text-decoration: none; 
   padding: 0.5em 0 0.5em 1em; 
   font-weight: bold;
+  color: ##33ccff;
 }
 
 nav ul li a:link {
   display: block;
+  color: ##33ccff;
 }
 
 nav ul li a:visited {
   display: block;
+  color: ##33ccff;
 }
 
 nav ul li a:hover {
@@ -90,12 +93,13 @@ nav ul li a:hover {
 
 nav ul li a:active {
   display: block;
+  color: ##33ccff;
 }
 
 nav ul li#iamhere a,
 nav ul li#iamhere a:link,
 nav ul li#iamhere a:visited,
-nav ul li#iamhere a:hover { color: #ff0000; background-color: #ffffff; border: thin solid navy;}
+nav ul li#iamhere a:hover { color: #08519c; }
 
 nav ul li { margin-bottom: 0; margin-top: 0; padding-top: 0; padding-bottom: 0;}
 
@@ -112,21 +116,22 @@ nav ul li { margin-bottom: 0; margin-top: 0; padding-top: 0; padding-bottom: 0;}
   padding-right: 5px;
 }
 
-#white_row {
+.row.white {
   padding: 3px 0 2px 0;
   background-color: white;
 }
 
-#gray_row {
+.row.gray {
   padding: 3px 0 2px 0;
   background-color: #EEEEEE;
 
 }
 
-#ltblue_row {
+.row.ltblue {
   background-color: #d8e9f3;
   padding-top:15px;
 }
+
 
 select {
   width: 200px;

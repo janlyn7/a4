@@ -6,7 +6,11 @@
 
 
 @section('content')
-     <div class='ten columns'>
+        <div class="one column">
+	&nbsp;
+	</div>
+
+     <div class='eight columns'>
         <form method='POST' action='/task/add' id='add_form'>
     	{{ csrf_field() }}
 
@@ -17,7 +21,7 @@
            <div class='row'>
 
 	       <label for='subject'>Subject</label>
-               <input type='text' autofocus name='subject' id='subject_input' value='{{ old('subject', '') }}'>
+               <input type='text' autofocus name='subject' id='subject_input' value='{{ $subject or ""}}'>
 	   </div>       
 
            <div class='row'>
@@ -26,7 +30,13 @@
                    @foreach($types_list as $id => $name)
 		       <li>
                          <label for='type_{{ $id }}'>
-                           <input type='checkbox' value='{{ $id }}' id='type_{{ $id }}' name='types[]'> 
+                           <input
+                              type='checkbox'
+                              value='{{ $id }}'
+                              id='type_{{ $id }}'
+                              name='types[]'
+                              @isset($typesForThisTask) {{ (in_array($id, $typesForThisTask)) ? 'CHECKED' : '' }} @endisset
+                           >
 			   {{ $name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          </label>
                        </li>
@@ -37,8 +47,8 @@
            <div class='row'>
 	      <label for='assignee'>Assignee</label>
                  <select name='assignee' id='assignee'>
-		    @foreach($assignees as $id => $assigneeName)
-                       <option value={{ $id }}> {{ $assigneeName }}
+		    @foreach($assignees_list as $id => $assigneeName)
+                       <option value={{ $id }} @isset($assignee_id) {{ ($assignee_id == $id) ? 'SELECTED' : '' }} @endisset> {{ $assigneeName }}
 		    @endforeach
 		 </select>
 	   </div>        
@@ -46,16 +56,16 @@
            <div class='row'>
 	      <label for='priority'>Priority</label>
                  <select name='priority' id='priority'>
-		    @foreach($priority as $pp)
-                       <option value={{ $pp }}> {{ $pp }}
+		    @foreach($priority_list as $pp)
+                       <option value={{ $pp }} @isset($priority) {{ ($priority == $pp) ? 'SELECTED' : '' }} @endisset> {{ $pp }}
 		    @endforeach
 		 </select>
 	   </div>        
            <div class='row'>
 	      <label for='status'>Status</label>
                  <select name='status' id='status'>
-		    @foreach($status as $stat)
-                       <option value={{ $stat }}> {{ $stat }}
+		    @foreach($status_list as $stat)
+                       <option value={{ $stat }} @isset($status) {{ ($status == $stat) ? 'SELECTED' : '' }} @endisset> {{ $stat }}
 		    @endforeach
 		 </select>
 
@@ -63,12 +73,12 @@
 
            <div class='row'>
  	       <label for='description'>Description</label>
-               <textarea name='description' id='description' form='add_form'>{{ old('description') }}</textarea>
+               <textarea name='description' id='description' form='add_form'>{{ $description or "" }}</textarea>
            </div>
 
            <div class='row'>
                <label for='notes'>Notes</label>
-               <textarea name='notes' id='notes' form='add_form'>{{ old('notes') }}</textarea> 
+               <textarea name='notes' id='notes' form='add_form'>{{ $notes or "" }}</textarea> 
            </div>
 
 

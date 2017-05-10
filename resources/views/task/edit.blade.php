@@ -6,7 +6,11 @@
 
 
 @section('content')
-       <div class='ten columns'>
+        <div class="one column">
+	&nbsp;
+	</div>
+
+       <div class='eight columns'>
          <form method='POST' action='/task/edit' id='edit_form'>
     	       {{ csrf_field() }}
 
@@ -27,7 +31,13 @@
                    @foreach($types_list as $id => $name)
                        <li>
                          <label for='type_{{ $id }}'>
-                           <input type='checkbox' value='{{ $id }}' id='type_{{ $id }}' name='types[]'>
+                           <input
+			      type='checkbox' 
+                              value='{{ $id }}' 
+                              id='type_{{ $id }}' 
+                              name='types[]'
+			      {{ (in_array($name, $typesForThisTask)) ? 'CHECKED' : '' }}
+                           >
                            {{ $name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          </label>
                        </li>
@@ -38,8 +48,8 @@
            <div class='row'>
 	      <label for='assignee'>Assignee</label>
                  <select name='assignee' id='assignee'>
-		    @foreach($assignees as $id => $assigneeName)
-                       <option value={{ $id }}> {{ $assigneeName }}
+		    @foreach($assignees_list as $id => $assigneeName)
+                       <option value={{ $id }} {{ (($task->assignee_id) == $id) ? 'SELECTED' : '' }} > {{ $assigneeName }}
 		    @endforeach
 		 </select>
            </div>
@@ -47,8 +57,8 @@
            <div class='row'>
 	      <label for='priority'>Priority</label>
                  <select name='priority' id='priority'>
-		    @foreach($priority as $pp)
-                       <option value={{ $pp }}> {{ $pp }}
+		    @foreach($priority_list as $pp)
+                       <option value={{ $pp }} {{ ($task->priority == $pp) ? 'SELECTED' : '' }} > {{ $pp }}
 		    @endforeach
 		 </select>
            </div>
@@ -56,8 +66,8 @@
            <div class='row'>
 	      <label for='status'>Status</label>
                  <select name='status' id='status'>
-		    @foreach($status as $stat)
-                       <option value={{ $stat }} > {{ $stat }}
+		    @foreach($status_list as $stat)
+                       <option value={{ $stat }} {{ ($task->status == $stat) ? 'SELECTED' : '' }} > {{ $stat }}
 		    @endforeach
 		 </select>
            </div>
