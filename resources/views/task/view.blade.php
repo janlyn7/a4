@@ -7,7 +7,7 @@
 
 @section('content')
        <div class='ten columns'>
-         <form method='POST' action='/task/edit' id='view_form'>
+         <form method='GET' action='/task/edit/{{ $task->id }}' id='view_form'>
     	       {{ csrf_field() }}
 
            <div class='row'>
@@ -34,7 +34,7 @@
 
            <div class='row'>
 	      Assignee: <br/>
-	      {{ $task->assignees }}
+	      {{ $assignees[$task->assignee_id] }}
            </div>
 
            <div class='row'>
@@ -59,7 +59,6 @@
 
            <div class='row'>
                <input type='submit' id='edit' value='Edit Task'>
-               <input type='submit' id='back' value='Back to Index'>
            </div>
          </form>
 

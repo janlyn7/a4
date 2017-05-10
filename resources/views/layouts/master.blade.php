@@ -42,6 +42,10 @@
 
 
     <div class="container" id="main">
+
+        <div class="row" id='buffer_row'>
+	  &nbsp;
+	</div>
         <div class="row">
 
         <div class="two columns" id="navigation">

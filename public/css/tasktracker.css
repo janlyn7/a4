@@ -20,27 +20,33 @@ body {
 }
 
 h5, h6 {
+  margin-top: 10px;
   font-weight: bold;
-  padding: 40px 0 0 0;
 }
 
+#idno {
+  text-align: right;
+}
 
 #main {
-   padding: 0px 0px 200px 20px;
+   padding: 0px 0px 200px 25px;
    font-family: 'Open Sans';
-   font-size: 12px;
-   //text-align: justify;
+   font-size: 13px;
    background-color: white;
+}
+
+#buffer_row {
+   height: 30px;
+}
+
+.column, .columns {
 
 }
 
 #navigation{
-  padding: 45px 0 0 0;
   font-family: 'Exo 2', sans-serif;
   font-weight: bold;
   font-size: 15px; 
-
-
 }
 
 #add_task {
@@ -98,11 +104,28 @@ nav ul li { margin-bottom: 0; margin-top: 0; padding-top: 0; padding-bottom: 0;}
 }
 
 #actions{
-  float: left;
+  float: right;
   list-style: none; 
   display: block;
-  width: 60px;
+  width: 84px;
+  text-align: center;
+  padding-right: 5px;
+}
 
+#white_row {
+  padding: 3px 0 2px 0;
+  background-color: white;
+}
+
+#gray_row {
+  padding: 3px 0 2px 0;
+  background-color: #EEEEEE;
+
+}
+
+#ltblue_row {
+  background-color: #d8e9f3;
+  padding-top:15px;
 }
 
 select {
@@ -111,6 +134,15 @@ select {
 
 #subject_input {
   width: 500px;
+}
+
+
+#subject {
+  width: 200px;
+}
+
+#status, #priority {
+  width: 70px;
 }
 
 #description, #notes {

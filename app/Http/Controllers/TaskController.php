@@ -127,14 +127,12 @@ class TaskController extends Controller
             'assignees' => $assignees_list,
 	    'types_list'=> $types_list,
 	    'typesForThisTask' => $typesForThisTask,
-            'priority'  => $this->priority,
-            'status'    => $this->status,
         ]);
     }
 
 
     public function edit($id) {
-    	//$task = Task::find($id);
+
         $task = Task::with('types')->find($id);
     	
         $assignees_list = Assignee::getListOfAssignees();
