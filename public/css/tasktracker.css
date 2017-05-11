@@ -107,6 +107,11 @@ nav ul li { margin-bottom: 0; margin-top: 0; padding-top: 0; padding-bottom: 0;}
   text-align: center;
 }
 
+#status_select, #priority_select, #assignee_select {
+  width: 200px;
+}
+
+
 #actions{
   float: right;
   list-style: none; 
@@ -132,11 +137,6 @@ nav ul li { margin-bottom: 0; margin-top: 0; padding-top: 0; padding-bottom: 0;}
   padding-top:15px;
 }
 
-
-select {
-  width: 200px;
-}
-
 #subject_input {
   width: 500px;
 }
@@ -157,12 +157,13 @@ select {
 
 .message {
   text-align: center;
-  background-color: yellow;
+  background-color: #FFEF6C;
 }
 
 .error {
   text-align: center;
-  background-color: red;
+  background-color: #F75D59;
+  color: white;
 }
 
 // for type tags

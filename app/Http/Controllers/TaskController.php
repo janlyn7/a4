@@ -33,11 +33,12 @@ class TaskController extends Controller
         $tasks = Task::with('types')->get();
 
 	if ($id =='assignee')
-	    $tasks = $tasks->sortByDesc('assignee');
+	    $tasks = $tasks->sortBy('assignee');
 	elseif ($id == 'priority')
-  	    $tasks = $tasks->sortByDesc('priority');
+  	    $tasks = $tasks->sortBy('priority');
 	elseif ($id == 'status')
-	    $tasks = $tasks->sortByDesc('status');
+	    $tasks = $tasks->sortBy('status');
+
 	/*
 	$tasksByType = collect();
 	foreach ($tasks as $task) {

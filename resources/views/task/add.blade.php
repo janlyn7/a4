@@ -46,7 +46,7 @@
 
            <div class='row'>
 	      <label for='assignee'>Assignee</label>
-                 <select name='assignee' id='assignee'>
+                 <select name='assignee' id='assignee_select'>
 		    @foreach($assignees_list as $id => $assigneeName)
                        <option value={{ $id }} @isset($assignee_id) {{ ($assignee_id == $id) ? 'SELECTED' : '' }} @endisset> {{ $assigneeName }}
 		    @endforeach
@@ -55,7 +55,7 @@
 
            <div class='row'>
 	      <label for='priority'>Priority</label>
-                 <select name='priority' id='priority'>
+                 <select name='priority' id='priority_select'>
 		    @foreach($priority_list as $pp)
                        <option value={{ $pp }} @isset($priority) {{ ($priority == $pp) ? 'SELECTED' : '' }} @endisset> {{ $pp }}
 		    @endforeach
@@ -63,7 +63,7 @@
 	   </div>        
            <div class='row'>
 	      <label for='status'>Status</label>
-                 <select name='status' id='status'>
+                 <select name='status' id='status_select'>
 		    @foreach($status_list as $stat)
                        <option value={{ $stat }} @isset($status) {{ ($status == $stat) ? 'SELECTED' : '' }} @endisset> {{ $stat }}
 		    @endforeach
