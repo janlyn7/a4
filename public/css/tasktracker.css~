@@ -20,7 +20,7 @@ h5, h6 {
   font-weight: bold;
 }
 
-.one.column.idno {
+#idno {
   text-align: right;
 }
 
@@ -117,7 +117,7 @@ nav ul li { margin-bottom: 0; margin-top: 0; padding-top: 0; padding-bottom: 0;}
 }
 
 
-.one.column.actions {
+#actions{
   float: right;
   list-style: none; 
   display: block;
@@ -147,11 +147,11 @@ nav ul li { margin-bottom: 0; margin-top: 0; padding-top: 0; padding-bottom: 0;}
 }
 
 
-.three.columns.subject {
+#subject {
   width: 200px;
 }
 
-.one.column.status, .one.column.priority {
+#status, #priority {
   width: 70px;
 }
 

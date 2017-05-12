@@ -30,10 +30,10 @@ class TaskController extends Controller
             ]);
 
 
-        $tasks = Task::with('types', 'assignee')->get();
+        $tasks = Task::with('types')->get();
 
-	if ($id =='assignee')	
-	    $tasks = $tasks->sortBy('assignee.last_name');
+	if ($id =='assignee')
+	    $tasks = $tasks->sortBy('assignee');
 	elseif ($id == 'priority')
   	    $tasks = $tasks->sortBy('priority');
 	elseif ($id == 'status')
@@ -50,9 +50,8 @@ class TaskController extends Controller
 	}
 	*/
 	
-	if ($id == 'type')
-            Session::flash('message', 'Sorting by Type has not been implemented.');
-
+	//dump($tasksByType);
+	
 	return view('task.index')->with([
 	    'tasks'     => $tasks,
 	    'assignees_list' => $assignees_list,
@@ -134,6 +133,7 @@ class TaskController extends Controller
 
 	$task->save();
 
+	//$types = ($request->types) ?: [];
         $task->types()->sync($types);
 
 	$task->save();
@@ -147,11 +147,7 @@ class TaskController extends Controller
 
     public function view($id) {
         $task = Task::with('types')->find($id);
-        if(!$task) {
-            Session::flash('error', 'Task '.$id.' not found.');
-            return redirect('/task');
-        }
-
+    	
         $assignees_list = Assignee::getListOfAssignees();
 	$types_list = Type::getListOfTypes();
 
@@ -173,11 +169,6 @@ class TaskController extends Controller
 
         $task = Task::with('types')->find($id);
     	
-        if(!$task) {
-            Session::flash('error', 'Task '.$id.' not found.');
-            return redirect('/task');
-	}
-
         $assignees_list = Assignee::getListOfAssignees();
 	$types_list = Type::getListOfTypes();
 
@@ -199,11 +190,6 @@ class TaskController extends Controller
 
     public function editTask(Request $request) {
     	$task = Task::with('types')->find($request->id);
-
-        if(!$task) {
-            Session::flash('error', 'Task '.$id.' not found.');
-            return redirect('/task');
-   	}
 
     	// validate inputs
         $rules = array(
@@ -266,6 +252,7 @@ class TaskController extends Controller
 
 
     public function deleteTask(Request $request) {
+        # Get the task to be deleted
         $task = Task::find($request->id);
         if(!$task) {
             Session::flash('error', 'Deletion failed; task '.$task->id.' not found.');
@@ -274,6 +261,7 @@ class TaskController extends Controller
         $task->types()->detach();
         $task->delete();
 
+        # Finish
         Session::flash('message', 'Task #'.$task->id.' was deleted.');
         return redirect('/task');
     }

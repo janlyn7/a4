@@ -7,9 +7,7 @@
 
     <link href='/css/tasktracker.css' rel='stylesheet' type='text/css'>
     <link rel="icon" type="image/png" href="../images/task_clipboard_icon.png">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans|Audiowide|Exo+2' rel='stylesheet' type='text/css'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css' rel='stylesheet' type='text/css' />
     <link href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css' rel='stylesheet' type='text/css'>
 
@@ -29,10 +27,14 @@
     @endif
 
     <div class='container'>
+      <div class='row' id='head'>
+	&nbsp;
+      </div>
+
 
       <div class='row' id='title_logo'>
         <div class='four columns' id='logo'>
-          <img src="/images/task_clipboard_icon.png" alt='tasktracker logo'>
+          <img src="/images/task_clipboard_icon.png">
         </div>
         <div class='eight columns' id='title'>
           <h1> Task Tracker</h1>
