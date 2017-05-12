@@ -35,7 +35,7 @@ h5, h6 {
    height: 30px;
 }
 
-#types_index {
+.types_index {
   font-style: italic;
   font-size: 10px;
 }

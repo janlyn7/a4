@@ -47,7 +47,7 @@
 	      <div class='three columns subject'>
                   {{ $task->subject }}
 
-		  <div id='types_index'>
+		  <div class='types_index'>
 	          @foreach ($task->types as $type)
                       {{ $type->name }} &nbsp;
                   @endforeach

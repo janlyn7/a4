@@ -50,7 +50,7 @@
 
         <div class="two columns" id="navigation">
 	  <nav>
- 	    <label for='views'>View By:</label>
+ 	    <label>View By:</label>
 	    <ul id='views'>
 	      <li @isset ($iamhere) @if ($iamhere =='number') id="iamhere" @endif @endisset><a href="/task/number"> Number</a></li>
 	      <li @isset ($iamhere) @if ($iamhere =='type') id="iamhere" @endif @endisset><a href="/task/type"> Type</a></li>
@@ -60,7 +60,7 @@
 	    </ul>
 	  </nav>
 
-	  </br>
+	  <br/>
  	  <a href="/task/add" id='add_task'>Add A Task</a>
 
 	</div>    
