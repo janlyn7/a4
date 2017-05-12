@@ -24,6 +24,8 @@
 
     @elseif (Session::has('message'))
       <div class='message'>{{ Session::get('message') }}</div>
+       @php (Session::forget('message'))
+
     @else
       <div class='nbsp'>&nbsp;</div>
     @endif

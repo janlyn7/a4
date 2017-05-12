@@ -66,7 +66,7 @@
               <div class='one column actions'>
 	        <a href="/task/delete/{{ $task->id }}"><img src="../images/trash.png" alt="trash task" style="width:26px;height:26px;border:0;"></a>
 	        <a href="/task/edit/{{ $task->id }}  "><img src="../images/edit.png"  alt="edit task"  style="width:26px;height:26px;border:0;"></a>
- 	        <a href="/task/view/{{ $task->id }}  "><img src="../images/view.png"  alt="view task"  style="width:26px;height:26px;border:0;"></a>
+ 	        <a href="/task/show/{{ $task->id }}  "><img src="../images/view.png"  alt="view task"  style="width:26px;height:26px;border:0;"></a>
 	      </div>
 
           </div>

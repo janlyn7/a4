@@ -13,8 +13,7 @@ class TypesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-	$types = ['red','orange','yellow','green','blue','purple', 'pink' ];
+	$types = ['Issue','Software','Engineering','Proposal','Maintenance','Documentation', 'Design' ];
 	
 	foreach ($types as $typeName) {
 	    $type = new Type();

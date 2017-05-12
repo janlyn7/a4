@@ -21,7 +21,7 @@
 	       Subject
            </div>
            <div class='row'>
-               {{ $task->subject }}
+               <br/>{{ $task->subject }}<br/><br/>
            </div>
 
 
@@ -42,37 +42,35 @@
 	      Assignee
            </div>
            <div class='row'>
-	      {{ $assignees_list[$task->assignee_id] }}
+	      <br/>{{ $assignees_list[$task->assignee_id] }}<br/><br/>
            </div>
 
            <div class='row ltblue'>
 	      Priority
            </div>
            <div class='row'>
-	      {{ $task->priority }}
+	      <br/>{{ $task->priority }}<br/><br/>
            </div>
 
            <div class='row ltblue'>
 	       Status
            </div>
            <div class='row'>
-	       {{ $task->status }}
+	       <br/>{{ $task->status }}<br/><br/>
            </div>
 
            <div class='row ltblue'>
  	       Description
            </div>
            <div class='row'>
-               {{ $task->description }}
-	       <br/> 
+               <br/>{{ $task->description }}<br/><br/> 
            </div>
 
            <div class='row ltblue'>
                Notes
            </div>
            <div class='row'>
-               {{ $task->comments }}
-	       <br/> 
+               <br/>{{ $task->comments }}<br/><br/>
            </div>
 
            <div class='row'>

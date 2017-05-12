@@ -78,8 +78,8 @@
            </div>
 
            <div class='row'>
-               <label for='notes'>Notes</label>
-               <textarea name='notes' id='notes' form='edit_form'>{{ $task->comments }}</textarea> 
+               <label for='comments'>Notes</label>
+               <textarea name='comments' id='comments' form='edit_form'>{{ $task->comments }}</textarea> 
            </div>
 
            <div class='row'>

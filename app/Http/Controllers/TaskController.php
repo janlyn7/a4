@@ -115,7 +115,7 @@ class TaskController extends Controller
 	       'types' => $request->types,
 	       'priority' => $request->priority,
 	       'status'  => $request->status,
-	       'notes'   => $request->notes,
+	       'comments'   => $request->comments,
    	       'types_list'=> $types_list,
   	       'priority_list'  => $this->priority,
 	       'status_list'    => $this->status,
@@ -145,7 +145,7 @@ class TaskController extends Controller
     }
 
 
-    public function view($id) {
+    public function show($id) {
         $task = Task::with('types')->find($id);
         if(!$task) {
             Session::flash('error', 'Task '.$id.' not found.');
@@ -160,7 +160,7 @@ class TaskController extends Controller
             $typesForThisTask[] = $type->name;
         }
 
-        return view('task.view')->with([
+        return view('task.show')->with([
 	    'task'      => $task,
             'assignees_list' => $assignees_list,
 	    'types_list'=> $types_list,

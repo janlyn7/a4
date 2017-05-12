@@ -14,13 +14,14 @@ class TaskTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //['Issue','Software','Engineering','Proposal','Maintenance','Documentation', 'Design' ];
+
 	$tasks = [
-	    '1' => ['blue', 'orange'],
-	    '2' => ['green'],
-	    '3' => ['blue', 'orange', 'red'],
-	    '4' => ['yellow', 'red'],
-	    '5' => ['pink'],
+	    '1' => ['Documentation'],
+	    '2' => ['Proposal'],
+	    '3' => ['Design', 'Engineering'],
+	    '4' => ['Issue', 'Maintenance', 'Software'],
+	    '5' => ['Issue'],
 	];
 
 	foreach ($tasks as $id => $types) {

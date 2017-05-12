@@ -76,8 +76,8 @@
            </div>
 
            <div class='row'>
-               <label for='notes'>Notes</label>
-               <textarea name='notes' id='notes' form='add_form'>{{ $notes or "" }}</textarea> 
+               <label for='comments'>Notes</label>
+               <textarea name='comments' id='comments' form='add_form'>{{ $comments or "" }}</textarea> 
            </div>
 
 

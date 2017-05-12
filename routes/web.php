@@ -16,7 +16,7 @@ Route::get('/task', 'TaskController@index');
 
 Route::get('/task/{id}', 'TaskController@index');
 
-Route::get('/task/view/{id}', 'TaskController@view');
+Route::get('/task/show/{id}', 'TaskController@show');
 
 Route::get('/task/add', 'TaskController@add');
 Route::post('/task/add', 'TaskController@addTask');
