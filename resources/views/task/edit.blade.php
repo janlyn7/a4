@@ -20,13 +20,13 @@
            </div>
 
            <div class='row'>
-	       <label for='subject'>Subject</label>
+	       <label>Subject</label>
                <input type='text' autofocus name='subject' id='subject_input' value='{{ $task->subject }}'>
            </div>
 
 
            <div class='row'>
-               <label for='types'>Task Types:</label>
+               <label>Task Types:</label>
                <ul id='types'>
                    @foreach($types_list as $id => $name)
                        <li>
@@ -46,40 +46,40 @@
            </div>
 
            <div class='row'>
-	      <label for='assignee'>Assignee</label>
+	      <label>Assignee</label>
                  <select name='assignee' id='assignee_select'>
 		    @foreach($assignees_list as $id => $assigneeName)
-                       <option value={{ $id }} {{ (($task->assignee_id) == $id) ? 'SELECTED' : '' }} > {{ $assigneeName }}
+                       <option value='{{ $id }}' {{ (($task->assignee_id) == $id) ? 'SELECTED' : '' }} > {{ $assigneeName }}
 		    @endforeach
 		 </select>
            </div>
 
            <div class='row'>
-	      <label for='priority'>Priority</label>
+	      <label>Priority</label>
                  <select name='priority' id='priority_select'>
 		    @foreach($priority_list as $pp)
-                       <option value={{ $pp }} {{ ($task->priority == $pp) ? 'SELECTED' : '' }} > {{ $pp }}
+                       <option value='{{ $pp }}' {{ ($task->priority == $pp) ? 'SELECTED' : '' }} > {{ $pp }}
 		    @endforeach
 		 </select>
            </div>
 
            <div class='row'>
-	      <label for='status'>Status</label>
+	      <label>Status</label>
                  <select name='status' id='status_select'>
 		    @foreach($status_list as $stat)
-                       <option value={{ $stat }} {{ ($task->status == $stat) ? 'SELECTED' : '' }} > {{ $stat }}
+                       <option value='{{ $stat }}' {{ ($task->status == $stat) ? 'SELECTED' : '' }} > {{ $stat }}
 		    @endforeach
 		 </select>
            </div>
 
            <div class='row'>
- 	       <label for=''>Description</label>
-               <textarea name='description' id='description' form='edit_page'>{{ $task->description }}</textarea>
+ 	       <label for='description'>Description</label>
+               <textarea name='description' id='description' form='edit_form'>{{ $task->description }}</textarea>
            </div>
 
            <div class='row'>
                <label for='notes'>Notes</label>
-               <textarea name='notes' id='notes' form='edit_page'>{{ $task->comments }}</textarea> 
+               <textarea name='notes' id='notes' form='edit_form'>{{ $task->comments }}</textarea> 
            </div>
 
            <div class='row'>

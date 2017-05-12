@@ -19,13 +19,12 @@
 	   </div>       
 
            <div class='row'>
-
-	       <label for='subject'>Subject</label>
+	       <label>Subject</label>
                <input type='text' autofocus name='subject' id='subject_input' value='{{ $subject or ""}}'>
 	   </div>       
 
            <div class='row'>
-               <label for='types'>Task Types:</label>
+               <label>Task Types:</label>
 	       <ul id='types'>
                    @foreach($types_list as $id => $name)
 		       <li>
@@ -45,27 +44,27 @@
            </div>
 
            <div class='row'>
-	      <label for='assignee'>Assignee</label>
+	      <label>Assignee</label>
                  <select name='assignee' id='assignee_select'>
 		    @foreach($assignees_list as $id => $assigneeName)
-                       <option value={{ $id }} @isset($assignee_id) {{ ($assignee_id == $id) ? 'SELECTED' : '' }} @endisset> {{ $assigneeName }}
+                       <option value='{{ $id }}' @isset($assignee_id) {{ ($assignee_id == $id) ? 'SELECTED' : '' }} @endisset> {{ $assigneeName }}
 		    @endforeach
 		 </select>
 	   </div>        
 
            <div class='row'>
-	      <label for='priority'>Priority</label>
+	      <label>Priority</label>
                  <select name='priority' id='priority_select'>
 		    @foreach($priority_list as $pp)
-                       <option value={{ $pp }} @isset($priority) {{ ($priority == $pp) ? 'SELECTED' : '' }} @endisset> {{ $pp }}
+                       <option value='{{ $pp }}' @isset($priority) {{ ($priority == $pp) ? 'SELECTED' : '' }} @endisset> {{ $pp }}
 		    @endforeach
 		 </select>
 	   </div>        
            <div class='row'>
-	      <label for='status'>Status</label>
+	      <label>Status</label>
                  <select name='status' id='status_select'>
 		    @foreach($status_list as $stat)
-                       <option value={{ $stat }} @isset($status) {{ ($status == $stat) ? 'SELECTED' : '' }} @endisset> {{ $stat }}
+                       <option value='{{ $stat }}' @isset($status) {{ ($status == $stat) ? 'SELECTED' : '' }} @endisset> {{ $stat }}
 		    @endforeach
 		 </select>
 
