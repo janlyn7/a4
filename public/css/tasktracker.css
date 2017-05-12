@@ -20,6 +20,12 @@ h5, h6 {
   font-weight: bold;
 }
 
+#req {
+  color: #F75D59;
+  font-style: italic;
+  font-size: 11px;
+}
+
 .one.column.idno {
   text-align: right;
 }

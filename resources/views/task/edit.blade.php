@@ -20,7 +20,7 @@
            </div>
 
            <div class='row'>
-	       <label>Subject</label>
+	       <label>Subject &nbsp;<span id='req'>(Required*)</span></label>
                <input type='text' autofocus name='subject' id='subject_input' value='{{ $task->subject }}'>
            </div>
 
