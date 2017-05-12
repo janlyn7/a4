@@ -72,6 +72,6 @@
           </div>
         @endforeach
 
-
+    </div>
 
 @endsection
